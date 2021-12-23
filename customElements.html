@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style >
+		body{
+			background-color: #fff0e9;
+		}
+		h1{
+			color: red;
+			text-align: center;
+		}
+		h2{
+			color: violet;
+			border: 2px solid black;
+			border-radius: 50px;
+			width: 500px;
+			margin: auto;
+			text-align: center;
+			background-color: lightblue;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>JavaScript Strings</h1>
+	<p class="main">India, officially the Republic of India (Hindi: Bhārat Gaṇarājya), is a country in South Asia. It is the seventh-largest country by area, the second-most populous country, and the most populous democracy in the world. Bounded by the Indian Ocean on the south, the Arabian Sea on the southwest, and the Bay of Bengal on the southeast, it shares land borders with Pakistan to the west;[f] China, Nepal, and Bhutan to the north; and Bangladesh and Myanmar to the east. In the Indian Ocean, India is in the vicinity of Sri Lanka and the Maldives; its Andaman and Nicobar Islands share a maritime border with Thailand, Myanmar and Indonesia.</p>
+	<h2>String slice</h2>
+	<p-text></p-text>
+	<p><mark>The above pragraph is displayed by customElements.</mark></p>
+	<p id="demo"></p>
+	<h2>String.indexOf()</h2>
+	<p-text></p-text>
+	<p><mark>The above pragraph is displayed by customElements.</mark></p>
+	<p id="demo1"></p>
+<script >
+	let element = document.querySelectorAll("p.main");
+	let word=element[0].innerHTML;
+	document.getElementById("demo").innerHTML = 'The first word in first paragraph is: ' + word.slice(0,5);
+	document.getElementById("demo1").innerHTML = 'The index of Asia is: ' + word.indexOf("Asia");
+</script>
+<script src="custom.js">
+
+</script>
+
+</body>
+</html>
