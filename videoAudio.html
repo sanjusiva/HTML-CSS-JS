@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video and Audio</title>
+<style>
+	*{
+		box-sizing: border-box;
+		background-color: #fff0e9;
+	}
+	#panel,#panel1 {
+  		display: none;
+	}
+	.flip,.flip1{
+		background-color: lightblue;
+		cursor: pointer;
+		width: 50%;
+		padding: 10px;
+		overflow: auto;
+	}
+	button{
+		background-color: hotpink;
+		color: black;
+	}
+	
+</style>
+
+<script>
+	function myFunction() {
+  	document.getElementById("panel").style.display = "block";
+}
+	function myFunction1() {
+  	document.getElementById("panel1").style.display = "block";
+}	
+	function changeVisibility() {
+    document.getElementById("panel").style.display = "none";
+}
+	function changeVisibility1() {
+    document.getElementById("panel1").style.display = "none";
+}
+</script>
+</head>
+<body>
+	<h1>Video and Audio</h1>
+	
+		<p class="flip" onclick="myFunction()" >Click to watch the video</p>
+			<div id="panel">
+				<h2>Video</h2>
+				<iframe width="800" height="500" src="https://www.youtube.com/embed/3SDkzDlw1yc">
+				</iframe><br>
+				<button onclick="changeVisibility()">Click to Hide</button></p>
+			</div>
+		<p class="flip1" onclick="myFunction1()">Click to hear songs</p>
+			<div id="panel1">
+				<h2>Audio</h2>
+				<p>Amma amma nee yenga amma</p>
+				<audio controls>
+			  	<source src="songs/Amma_Amma-StarMusiQ.Com.mp3" type="audio/mp3"></audio>
+			  	<p>Boomi Enna Suthudhe</p>
+				<audio controls>
+			  	<source src="songs/Boomi Enna Suthudhe - TamilWire.com.mp3" type="audio/mp3"></audio>
+				<p>Chotta Chotta</p>
+				<audio controls>
+			  	<source src="songs/Chotta Chotta.mp3" type="audio/mp3"></audio>
+			  	<p>Darling Dambakku</p>
+				<audio controls>
+			  	<source src="songs/Darling_Dambakku_(Reprise)-StarMusiQ.Com.mp3" type="audio/mp3"></audio>
+			  	<p>En Kannu Kulla</p>
+				<audio controls>
+			  	<source src="songs/En Kannu Kulla.mp3" type="audio/mp3"></audio><br>
+			  	<button onclick="changeVisibility1()">Click to Hide</button>
+			</div>
+		</div>
+  	
+</body>
+</html>
+
