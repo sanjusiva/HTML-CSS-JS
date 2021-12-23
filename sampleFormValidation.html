@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+        input[type = text] {
+            width: 30%;
+            padding: 10px 10px;
+            margin: 20px ;
+            position: relative;
+            left: 80px ;
+            box-sizing: border-box;
+        }
+       
+        body{
+        	margin-left: 80px ;
+        	background-color: #fff0e9;
+        }
+        header{
+        	text-align: center;
+        	color: white;
+        	background-color: black;
+        }
+        #box{
+            border: 1px solid black;
+            float: right;
+            width: 350px;
+            height: 400px;
+            background: lightblue;
+            margin-top: 40px;
+        }
+        #container{
+            position:absolute;
+            top: 25%;
+            left: 45%;
+            width:40em;
+            height:43em;
+            margin-top: -9em; /*set to a negative number 1/2 of your height*/
+            margin-left: -15em; /*set to a negative number 1/2 of your width*/
+            border: 1px solid #ccc;
+            background-color: #f3f3f3;
+        }
+        #areacode{
+        	width: 90px;
+        }
+        #sub{
+        	width: 30%;
+            padding: 10px 15px;
+            margin: 20px ;
+            position: relative;
+            left: 80px ;
+            box-sizing: border-box;
+        }
+        #button{
+            margin: 0;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        	width: 15%;
+            padding: 10px 15px;
+            background-color: red;
+            box-sizing: border-box;
+        }
+        #name,#com,#mail,#phoneid{
+            color: red;
+        }
+        h1{
+        	text-align: center;
+        }
+        h4{
+            text-align: center;
+        	color: hotpink;
+        }
+      </style>
+</head>
+<body>
+    <div id="container">
+	<header>
+		<h1>EVENT REGISTRATION FORM </h1>
+	</header>
+	<form name="form1" action="regcomplete.html" onsubmit ="return validate()" >
+		<label for="fname">Name</label>
+		<input type="text" id="fname" name="fname" placeholder="Fist Name"  required>
+		<input type="text" id="lname" name="lname" placeholder="Last Name" ><br><div id="name"></div>
+		<label for="company">Company</label>
+		<input type="text" id="company" name="company" required><br><div id="com"></div>
+		<label for="email">Email</label>
+		<input type="text" id="email" name="email" placeholder="example@gmail.com || example@abc.co.in"required><br><div id="mail"></div>
+		<label for="phoneno">Phone</label>
+		<input type="text" id="areacode" name="areacode" minlength="4" maxlength="4" size="4" placeholder="Area Code" required>
+		<input type="text" id="phoneno" name="phoneno" minlength="10" maxlength="10" size="10" placeholder="Phone Number"required><br><div id="phoneid"></div>
+		<label for="sub">Subject</label>
+		<select name="sub" id="sub" required>
+		  	<option value=""disabled selected hidden>Choose Option</option>
+		    <option value="debate">Debate</option>
+		    <option value="dance">Dance</option>
+		    <option value="singing">Singing</option>
+		    <option value="speech">Speech</option>
+		</select><br><br><br><br>
+		<label>Are you an existing customer?</label><br>
+		<input type="radio" id="yes" name="customer" value="Yes" checked>
+	    <label for="yes">Yes</label>
+	    <input type="radio" id="no" name="customer" value="No">
+	    <label for="no">No</label><br><br><br>
+		<input id="button" type="submit" value="Register">
+	</form></div>
+    <div id="box">
+    <h4>Requirements</h4>  
+<ul>
+<li>Create an user interface for Event Registration Form.</li> 
+<li>This page should contain first name, last name, company name, email id, phone no and subject.</li> 
+<li>All the fields should be validated. First name, last name, company name, subject should accept only alphabets.</li> 
+<li>Phone number should accept only 10 digit numbers.</li> 
+<li>Email Id should be in the following format example@email.com</li>
+<li>Implement the above mentioned requirements by using html, css and javascript.</li>
+</ul></div>       
+    <script>
+        function validate(){
+            var company = document.forms["form1"]["company"].value;
+            var FirstName = document.forms["form1"]["fname"].value;
+            var LastName = document.forms["form1"]["lname"].value;
+            var maildId=document.forms["form1"]["email"].value;
+            var area_code=document.forms["form1"]["areacode"].value;
+            var ph_no=document.forms["form1"]["phoneno"].value;
+
+            var companyFormat=/[0-9]+/;
+            var mailFormat=/([a-zA-Z0-9-_\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,10})(\.[a-zA-Z]{2,8})?$/;
+            var phone_codeFormat=/[a-zA-Z]+/;
+
+                if (companyFormat.test(FirstName)) {
+                    document.getElementById("name").innerHTML="Fist Name must be ony alphabets ";
+                    return false;    
+                }
+                else if(companyFormat.test(FirstName)==false)
+                {
+                    document.getElementById("name").innerHTML=" ";
+                }
+                if (companyFormat.test(LastName)) {
+                    document.getElementById("name").innerHTML="Last Name must be ony alphabets ";
+                    return false;
+                }
+                else if(companyFormat.test(LastName)==false)
+                {
+                    document.getElementById("name").innerHTML=" ";
+                }
+                if (companyFormat.test(company)) {
+                    document.getElementById("com").innerHTML="Company Name must be ony alphabets ";
+                    return false;
+                }
+                else if(companyFormat.test(company)==false)
+                {
+                    document.getElementById("com").innerHTML=" ";
+                }
+                if (mailFormat.test(maildId)==false) {
+                    document.getElementById("mail").innerHTML="Mail Id should be in proper format.eg:'example@gmail.com' or 'example@abc.co.in'";
+                    return false;
+                }
+                else if(mailFormat.test(maildId))
+                {
+                    document.getElementById("mail").innerHTML=" ";
+                }
+                if (phone_codeFormat.test(area_code)) {
+                    document.getElementById("phoneid").innerHTML="Area code must be numbers only";
+                    return false;
+                }
+                else if(phone_codeFormat.test(area_code)==false)
+                {
+                    document.getElementById("phoneid").innerHTML=" ";
+                }
+                if (phone_codeFormat.test(ph_no)) {
+                    document.getElementById("phoneid").innerHTML="Phone number must be numbers only";
+                    return false;
+                }
+                else if(phone_codeFormat.test(ph_no)==false)
+                {
+                    document.getElementById("phoneid").innerHTML=" ";
+                }
+
+        }
+    </script>
+</div><br><hr>
+</body>
+</html>
