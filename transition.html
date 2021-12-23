@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transtion</title>
+<style>
+	body{
+		background: white;
+		padding:50px;
+		margin:0;
+
+	}
+	h1{
+		text-align: center;
+	}
+	#container{
+		width:550px;
+		height: 350px;
+		border:15px solid grey;
+		overflow: hidden;
+		background-color: black;
+		cursor: pointer;
+	}
+
+	#ball {
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  background: pink;
+  transform: translate3d(50px,50px,0);
+  transition: transform .3s ease-in;
+}
+div#container{
+	conte
+}
+</style>
+</head>
+<body>
+	<h1>Click anywhere inside the container to move the ball</h1>
+	<div id="container">
+	<div id="ball"></div>
+	</div>
+
+	<script>
+	var theBall = document.querySelector("#ball");
+	var theContainer=document.querySelector("#container");
+	theContainer.addEventListener("click",getClickPosition);
+	
+	function getClickPosition(e){
+		var parenetPosition=getPosition(theContainer);
+		var xPosition=e.clientX - parenetPosition.x - (theBall.offsetWidth / 2);
+		var yPosition=e.clientY - parenetPosition.y - (theBall.offsetHeight / 2);
+		var translate3dValue = "translate3d(" +xPosition+"px,"+yPosition+"px,0)";
+		theBall.style.transform=translate3dValue;
+	}	
+	function getPosition(element){
+		var xPosition=0;
+		var yPosition=0;
+		while(element){
+		xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+		yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+		element=element.offsetParenet; 
+	}
+	
+	return{
+		x:xPosition,
+		y:yPosition
+	};
+}
+
+</script>
+</body>
+</html>
