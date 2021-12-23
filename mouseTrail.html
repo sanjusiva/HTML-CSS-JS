@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .trail { /* className for the trail elements */
+        position: absolute;
+        height: 6px; width: 6px;
+        border-radius: 3px;
+        background: teal;
+    }
+    body {
+        height: 300px;
+    }
+    h1{
+        text-align: center;
+    }
+</style>
+
+<body>
+    <h1>Mouse Trail</h1>
+<script>
+    let dots = [];
+    for (let i = 0; i < 20; i++) {
+        let node = document.createElement("div");
+        node.className = "trail";
+        document.body.appendChild(node);
+        dots.push(node);
+    }
+    let currentDot = 0;
+  
+    window.addEventListener("mousemove", event => {
+        let dot = dots[currentDot];
+        dot.style.left = (event.pageX ) + "px";//Get the horizontal coordinate
+        dot.style.top = (event.pageY ) + "px";//Get the vertical coordinate
+        currentDot = (currentDot + 1) % dots.length;//add dots
+    });
+</script>
+</body>
+</html>
