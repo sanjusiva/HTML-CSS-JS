@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+body {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  background: #1a1c1d;
+}
+
+
+h1 {
+  font-size: 50px;
+  color: #fff;
+}
+
+
+.balloon {
+  font-size: 40px;
+}
+
+</style>  
+<script>
+function balloon(event) {
+  switch (event.keyCode) {
+    case 40://downarrow
+      changeSize('.balloon', 1.1, 'down');
+      break;
+    case 38://uparrow
+      changeSize('.balloon', 1.1);
+      break;
+    default:
+      return ; 
+  }
+}
+
+function changeSize(element, amount, direction) {
+  element = document.querySelector(element);
+  let elementSize = window.getComputedStyle(element).fontSize;
+  let elementSizeValue = getSizeValue(elementSize, 'px');
+
+  if (direction === undefined) {
+    elementSizeValue *= amount;//size increases
+  } 
+  else elementSizeValue /= amount;//size decreases
+
+  if (elementSizeValue <= 100) {
+    elementSize = Math.ceil(elementSizeValue) + 'px';//Math.ceil() rounds a number UP to the nearest integer
+    element.style.fontSize = elementSize;
+  } 
+  else boom(element);
+} 
+function getSizeValue(valueWithUnit, unit)/*eg : valueWithUnit->40,Unit->px*/ {
+  return parseInt(valueWithUnit.split(unit)[0]);//return 40
+}
+
+function boom(element) {
+  element.firstChild.nodeValue = '💥';
+  document.removeEventListener('keydown', balloon, true);
+}
+
+document.addEventListener('keydown', balloon, true);
+</script>
+</head>
+
+<body>
+  <div>
+    <h1>Balloon</h1>
+    <p class="balloon">🎈</p>
+
+  </div>
+
+
+</body>
+
+</html>
