@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+        input[type = text] {
+            width: 30%;
+            padding: 10px 15px;
+            margin: 20px ;
+            position: relative;
+            left: 80px ;
+            box-sizing: border-box;
+        }
+        body{
+        	margin-left: 80px ;
+        	background-color: #fff0e9;
+        }
+        header{
+        	text-align: center;
+        	color: white;
+        	background-color: black;
+        }
+        #areacode{
+        	width: 100px;
+        }
+        #sub{
+        	width: 30%;
+            padding: 10px 15px;
+            margin: 20px ;
+            position: relative;
+            left: 80px ;
+            box-sizing: border-box;
+        }
+        #button{
+        	width: 15%;
+            padding: 10px 15px;
+            background-color: red;
+            box-sizing: border-box;
+        }
+        h1{
+        	text-align: center;
+        }
+        h4{
+        	color: hotpink;
+        }
+      </style>
+</head>
+<body>
+	<header>
+		<h1>EVENT REGISTRATION FORM </h1>
+	</header>
+	<form name="form1" action="regcomplete.html" >
+		<label for="fname">Name  </label>
+		<input type="text" id="fname" name="fname" placeholder="Fist Name"  pattern="[A-Za-z]+" title="First Name should be alphabets only" required>
+		<input type="text" id="lname" name="lname" placeholder="Last Name"  pattern="[A-Za-z]+" title="Last Name should be alphabets only"><br>
+		<label for="company">Company   </label>
+		<input type="text" id="company" name="company" pattern="[A-Za-z]+" title="Comapny name should be alphabets only" required><br>
+		<label for="email">Email   </label>
+		<input type="text" id="email" name="email" placeholder="example@gmail.com || example@abc.co.in" pattern="([a-zA-Z0-9-_\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,10})(\.[a-zA-Z]{2,8})?$" title="Example maildId abcd@gmail.com" required><br>
+		<label for="phoneno">Phone  </label>
+		<input type="text" id="areacode" name="areacode" minlength="4" maxlength="4" size="4" placeholder="Area Code" required>
+		<input type="text" id="phoneno" name="phoneno" placeholder="Phone Number" pattern="[0-9]{10}" title="Phone Number should only be numbers with 10Digit" required><br>
+		<label for="sub">Subject  </label>
+		<select name="sub" id="sub" required>
+		  	<option value=""disabled selected hidden>Choose Option</option>
+		    <option value="debate">Debate</option>
+		    <option value="dance">Dance</option>
+		    <option value="singing">Singing</option>
+		    <option value="speech">Speech</option>
+		</select><br><br><br><br>
+		<label>Are you an existing customer?</label><br>
+		<input type="radio" id="yes" name="customer" value="Yes" checked>
+	    <label for="yes">Yes</label>
+	    <input type="radio" id="no" name="customer" value="No">
+	    <label for="no">No</label><br><br><br>
+		<input id="button" type="submit" value="Register">
+	</form><br><hr>
+	
+</body>
+</html>
