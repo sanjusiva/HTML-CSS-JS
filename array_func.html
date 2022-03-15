@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>Array Functions</h2>
+    
+    <p>Actual array = ["Namjoon","Min Yoongi","Jin","J-Hope","Jimin","Taehyung","Jungkook"]</p>
+    Length of the array : <p id="first"></p>
+    Slicing the array :<p id="demo"></p>
+    Splicing the array : <p id="demo1"></p>
+    After sorting : <p id="demo2"></p>
+    Reversing the sorted array : <p id="demo3"></p>
+    Deleting an element in the array will create a hole in the array : <p id="demo4"></p> 
+
+<script>
+    const BTS = ["Namjoon","Min Yoongi","Jin","J-Hope","Jimin","Taehyung","Jungkook"];
+
+    var members = BTS.length;
+    document.getElementById("first").innerHTML = members;
+
+    const maknae = BTS.slice(4);
+    document.getElementById("demo").innerHTML = maknae;
+
+    BTS.splice(2, 0, "Papa Mochi", "Halsey");//adding new elements into the array
+    document.getElementById("demo1").innerHTML = BTS;
+
+    const sort_BTS=BTS.sort();
+    document.getElementById("demo2").innerHTML = sort_BTS;
+    
+    const reverse_BTS=BTS.reverse();//reverses the sorted array
+    document.getElementById("demo3").innerHTML = reverse_BTS;
+
+    delete BTS[1];
+    document.getElementById("demo4").innerHTML ="The deleted item : " + BTS[1];
+
+
+
+</script>
+
+</body>
+</html>
