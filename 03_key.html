@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>KeyboardEvent key Property</h1>
+<p>Returns the identifier of the key that was pressed when a key event occured.</p>
+<p>Prints the key name which is pressed</p>
+
+<input type="text" size="40" onkeyup="myFunction(event)">
+
+<p id="demo"></p>
+
+<script>
+function myFunction(event) {
+  var a = event.key;
+  document.getElementById("demo").innerHTML = "The pressed key was: " + a;
+}
+</script>
+
+</body>
+</html>
