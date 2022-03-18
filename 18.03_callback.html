@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<h2>CallBack function</h2>
+
+	<p><u>The synchronous callback</u></p>
+	<p> <ul><li> Synchronous callbacks are blocking: the higher-order function doesn't complete its execution until the callback is done executing.</p></li></ul>
+	<p id="demo1"></p>
+
+	<p><u>The asynchronous callback</u></p>
+	<p><ul><li> Asynchronous callbacks are non-blocking: the higher-order function completes its execution without waiting for the callback. </p></li></ul>
+	<p id="demo2"></p>
+
+	<p><u>Simple callback function.</u></p>
+	<p><ul><li> A callback function is a function passed into another function as an argument</p></li></ul>
+	<button onclick="printFunction()">Click me</button>
+	<p id="demo3"></p>
+
+
+
+
+<script>
+	function info(name) {
+		let content = "Hello, "+name+" ,Thanks for registering! ";
+		return content;
+	}
+	function printFunction()
+	{
+		const candidates = ['Sanjitha'];
+		const message = candidates.map(info);
+		console.log(message); 
+		document.getElementById("demo3").innerHTML = message;
+	}
+
+	function map(value, callback) 
+	{
+		console.log('map() starts');
+		const mappedValue = [];
+		for (const item of value) 
+			{ 
+				mappedValue.push(callback(item)) 
+			}
+		console.log('map() completed');
+	    return mappedValue;
+	}
+	function work(caller) {
+	  console.log('work() called');
+	  //document.getElementById("demo1").innerHTML = `Hello, ${caller}!`;
+	}
+	console.log("Synchronous callback")
+	const name = ['Ana'];
+	map(name, work);
+
+	console.log("asynchronous callback");
+	console.log('setTimeout() starts');
+	setTimeout(function wait() 
+	{
+	  console.log('wait() called');
+	}, 3000);
+	console.log('setTimeout() completed');
+
+
+</script>
+</body>
+</html>
