@@ -1,0 +1,43 @@
+<html>
+<body>
+
+<label for=fname>Name</label>
+<input type="text" id="fname" name="fname" placeholder="Fist Name"  required>
+<input type="text" id="lname" name="lname" placeholder="Last Name"  required><br><br>
+<label for=email>Email</label>
+<input type="email" id="email" name="email" placeholder="example@gmail.com (or) example@abc.co.in" required><br><br>
+<button onclick="localStore()">click me</button>
+<button onclick="delValue()">Delete values</button>
+<button onclick="delSession()">Delete mail</button>
+<br><br>
+<div id="result"></div>
+<div id="result1"></div>
+<div id="result2"></div>
+<script>
+    localStore = function(){
+    var firstName=document.getElementById("fname").value;
+    var lastName=document.getElementById("lname").value;
+    var mailId=document.getElementById("email").value;
+    localStorage.setItem("firstname",firstName);
+    localStorage.setItem("lastname",lastName);
+    sessionStorage.setItem("MailId",mailId);
+    
+    // Retrieve the added item
+    document.getElementById("result").innerText = "First name : " + localStorage.getItem("firstname");
+    document.getElementById("result1").innerText = "Last name : " + localStorage.getItem("lastname");
+    document.getElementById("result2").innerText = "Mail Id : " + sessionStorage.getItem("MailId");
+    }
+    delValue=function(){
+        localStorage.removeItem("firstname");
+        document.getElementById("result").innerText = " ";
+        document.getElementById("result1").innerText = " ";
+    }
+    delSession=function(){
+        sessionStorage.clear();
+        document.getElementById("result2").innerText = " ";
+    }
+</script>
+</body>
+</html>
+
+ 

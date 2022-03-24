@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detecting device orientation</title>
+    <style>
+      body {
+        display: flex;
+      }
+    
+      @media (orientation: landscape) {
+        body {
+          flex-direction: row;
+          background-color:red;
+        }
+      }
+      @media (orientation: portrait) {
+        body {
+          flex-direction: column;
+          background-color:green;
+          font-size: xx-large;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>Paragraph One</div>
+    <div>Paragrap Two</div>
+    <div>Paragraph Three</div>
+  </body>
+</html>
