@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    input[type = text],[type=tel],[type=email],[type=date],select
+    {
+      width: 50%;
+      padding: 10px 10px;
+      margin: 20px ;
+      position: relative;
+      left: 90px ;
+      box-sizing: border-box;
+    }
+    input[type=date]
+    {
+      left: 40px;
+    } 
+    input[type=radio]
+    {
+      margin-left: 50px;
+      left:110px;
+    }
+    select
+    {
+      left: 50px;
+    }
+    body
+    {
+      margin-left: 80px ;
+      background-color: #fff0e9;
+    }
+    header
+    {
+      text-align: center;
+      color: white;
+      background-color: black;
+    }
+    #container
+    {
+      padding: 30px;
+      top: 40%;
+      left: 50%;
+      width:40em;
+      margin: auto;
+      border: 1px solid #ccc;
+      background-color: #f3f3f3;
+    }
+    #sub
+    {
+      width: 30%;
+      padding: 10px 15px;
+      margin: 20px ;
+      left: 80px ;
+      box-sizing: border-box;
+    }
+    #name,#com,#mail,#phoneid,#lnameErr,#age,#checkErr,#perform
+    {
+      color: red;
+    }
+    #lname
+    {
+      left: 75px;
+    } 
+    #set
+    {
+      position: relative;
+      left: 100px;
+    }
+    #button
+    {
+      margin-left: 250px;
+      padding: 10px 15px;
+      background-color: red;
+      box-sizing: border-box;
+    } 
+    
+       
+  </style>
+</head>
+<body>
+  <div id="container">
+    <header>
+      <h1>EVENT REGISTRATION FORM </h1>
+	  </header>
+	<form name="form1" id="form1" action="respond.html" onsubmit ="return validate()" method="get">
+		<label for="fname">Name</label>
+		<input type="text" id="fname" name="fname" placeholder="Fist Name" ><div id="name"></div>
+    <label for="lname">Surname</label>
+		<input type="text" id="lname" name="lname" placeholder="Last Name" ><br><div id="lnameErr"></div>
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email" placeholder="example@gmail.com (or) example@abc.co.in" ><br><div id="mail"></div>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob">
+    <button type="button" class="set"id="set" onclick="validatingDateOfBirth()">Set</button><div id="age"></div><br> 
+		<label for="phoneno">Phone</label>
+		<input type="tel" id="phoneno" name="phoneno" placeholder="Phone Number"><br><div id="phoneid"></div>
+		<div>
+      <label for="selector">Performance</label>
+      <select id="selector" onchange="newField(this)">
+          <option value=""hidden>Select</option>
+          <option value="dance">Dance</option>
+          <option value="singing">Singing</option>
+          <option value="speech">Speech</option>
+      </select>
+  </div>
+  
+  <div id="dp" style="display: none">
+      <label for="dance">Type of dance</label> 
+      <input type="text" id="dancer" name="dancer"><br>
+  </div>
+  <div id="sp" style="display: none">
+      <label for="singing">Type of song</label> 
+      <input type="text" id="singer" name="singer"><br>
+  </div>
+  <div id="spp" style="display: none">
+      <label for="speech">Speech Topic</label> 
+      <input type="text" id="speeker" name="speeker"><br>
+  </div><div id="perform"></div>
+		<label>Are you an existing customer?</label>
+		<input type="radio" id="yes" name="customer" value="Yes" checked>
+	  <label for="yes">Yes</label>
+	  <input type="radio" id="no" name="customer" value="No">
+	  <label for="no">No</label><br><br>
+  <div>
+    <input type="checkbox" id="check" name="check" value="check" >
+    <label for="check"> The above information is true to my knowledge.</label><div id="checkErr"></div> <br></div><hr>
+  <div>
+		<input id="button" type="submit" value="Register">
+  </div>
+	</form>
+</div>   
+<script>
+
+    var firstName=document.getElementById("fname");
+    var lastName=document.getElementById("lname");
+    var phoneNo =document.getElementById("phoneno");
+    var mailId=document.getElementById("email");
+    var Date_of_birth = document.getElementById("dob");
+    var checkBox=document.getElementById("check");
+    var dance_fill=document.getElementById("dancer");
+    var song_fill=document.getElementById("singer");
+    var speech_fill=document.getElementById("speeker");
+
+
+
+  function validate()
+  {
+    
+
+    if(!firstName.value.length)
+    {
+      document.getElementById("name").innerHTML="This field is neccessary";
+      if(!lastName.value.length)
+      {
+        document.getElementById("lnameErr").innerHTML="This field is neccessary";
+        if(!mailId.value.length)
+        {
+          document.getElementById("mail").innerHTML="This field is neccessary";
+          if(!Date_of_birth.value)
+          {
+            document.getElementById("age").innerHTML="This field is neccessary";
+            if(!phoneNo.value.length)
+            {
+              document.getElementById("phoneid").innerHTML="This field is neccessary";
+              return false;
+            }
+          }
+        }
+      }
+    }
+    if(!dance_fill.value.length)
+    {
+      document.getElementById("perform").innerHTML="This field is neccessary";
+      return false;
+    }
+    if(!song_fill.value.length)
+    {
+      document.getElementById("perform").innerHTML="This field is neccessary";
+      return false;
+    }
+    if(!speech_fill.value.length)
+    {
+      document.getElementById("perform").innerHTML="This field is neccessary";
+      return false;
+    }
+    else
+    {
+      document.getElementById("perform").innerHTML=" ";
+    }
+    if(checkBox.checked==false)
+    {
+      document.getElementById("checkErr").innerHTML="This field is neccessary";
+      return false;
+    }
+  }
+  
+  function newField(fieldValue) 
+  {
+    if (fieldValue.value == "dance") 
+    {
+      document.getElementById("dp").style.display = "block";
+    }
+    else
+    {
+      document.getElementById("dp").style.display = "none";
+    }
+    if (fieldValue.value == "singing")
+    {
+      document.getElementById("sp").style.display = "block";
+    }
+    else
+    {
+      document.getElementById("sp").style.display = "none";
+    }  
+    if (fieldValue.value == "speech")
+    {
+      document.getElementById("spp").style.display = "block";
+    }
+    else
+    {
+      document.getElementById("spp").style.display = "none";
+    }
+  }
+
+  var alphaFormat=/^[a-zA-Z ]+$/;
+  var alphaNumericFormat=/([a-zA-Z0-9-_\.]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})(\.[a-zA-Z]{2,5})?$/;
+  var numericFormat=/^[6-9]\d{9}$/;
+
+  firstName.addEventListener('blur',validatingFistName);
+  lastName.addEventListener('blur',validatingLastName);
+  phoneNo.addEventListener('blur',validatingPhoneNumber);
+  mailId.addEventListener('blur',validatingMailId);
+  Date_of_birth.addEventListener('blur',validatingDateOfBirth);
+  dance_fill.addEventListener('blur',validateDance);
+  song_fill.addEventListener('blur',validateSong);
+  speech_fill.addEventListener('blur',validateSpeech);
+  function validatingFistName()
+  {
+    if(!firstName.value.length)
+    {
+      document.getElementById("name").innerHTML="This field is neccessary";
+      return false;
+    }
+    else if(alphaFormat.test(firstName.value)==false)
+    {
+      document.getElementById("name").innerHTML="First Name must be only alphabets ";
+      return false;
+    }
+    else if(firstName.value.length<2)
+    {
+      document.getElementById("name").innerHTML="First Name cannot be too short";
+      return false;
+    }
+    else
+    {
+      document.getElementById("name").innerHTML=" ";
+    }
+  }
+  function validatingLastName()
+  {
+    if(!lastName.value.length)
+    {
+      document.getElementById("lnameErr").innerHTML="This field is neccessary";
+      return false;
+    }
+    else if(alphaFormat.test(lastName.value)==false)
+    {
+      document.getElementById("lnameErr").innerHTML="Last Name must be only alphabets ";
+      return false;
+    }
+    else
+    {
+      document.getElementById("lnameErr").innerHTML=" ";
+    }
+  }
+  function validatingMailId()
+  {
+    if(!mailId.value.length)
+    {
+      document.getElementById("mail").innerHTML="This field is neccessary";
+      return false;
+    }
+    else if(alphaNumericFormat.test(mailId.value)==false)
+    {
+      document.getElementById("mail").innerHTML="Mail Id should be in proper format.eg:'example@gmail.com' or 'example@abc.co.in'";
+      return false;
+    }
+    else if(alphaNumericFormat.test(mailId.value))
+    {
+      document.getElementById("mail").innerHTML=" ";
+    }
+  }
+  function validatingDateOfBirth()
+  {
+    if(calculateAge()>=18 && calculateAge()<=60)
+    {
+      document.getElementById("age").innerHTML="Your age is "+calculateAge()+" .You are eligible";
+    }
+    else if(calculateAge()<18 && calculateAge()>=0)
+    {
+      document.getElementById("age").innerHTML="Your age is "+calculateAge()+" ,which is less than 18.You are not eligible";
+    }
+    else if(calculateAge()<0)
+    {
+      document.getElementById("age").innerHTML="Future dates are not accepted. Please enter correct date of birth";
+    }
+    else if(calculateAge()>60)
+    {
+      document.getElementById("age").innerHTML="Sorry you are not eligible."
+    }
+  }
+  function validatingPhoneNumber()
+  {
+    if(!phoneNo.value.length)
+    {
+      document.getElementById("phoneid").innerHTML="This field is neccessary";
+      return false;
+    }
+    else if(phoneNo.value.length<10)
+    {
+      document.getElementById("phoneid").innerHTML="Please ensure the given phone number is in 10 digit ";
+      return false;
+    }
+    else if(numericFormat.test(phoneNo.value)==false)
+    {
+      document.getElementById("phoneid").innerHTML="Entered phone number is incorrect.<br>First digit of the phone number should be either 6,7,8,9";
+      return false;
+    }
+    else if(numericFormat.test(phoneNo.value))
+    {
+      document.getElementById("phoneid").innerHTML=" ";
+    }
+  }
+  function validateDance()
+  {
+    if(!dance_fill.value.length)
+    {
+      document.getElementById("perform").innerHTML="This field is neccessary";
+      return false;
+    }
+    else
+    {
+      document.getElementById("perform").innerHTML=" ";
+    }
+  }
+  function validateSong()
+  {
+    if(!song_fill.value.length)
+    {
+      document.getElementById("perform").innerHTML="This field is neccessary";
+      return false;
+    }
+    else
+    {
+      document.getElementById("perform").innerHTML=" ";
+    }
+  }
+  function validateSpeech()
+  {
+    if(!speech_fill.value.length)
+    {
+      document.getElementById("perform").innerHTML="This field is neccessary";
+      return false;
+    }
+    else
+    {
+      document.getElementById("perform").innerHTML=" ";
+    }
+  }
+
+  function calculateAge()
+  {
+    const birthDay = document.getElementById("dob").value;
+    const birthDate=new Date(birthDay);
+    const birth_date = birthDate.getDate();
+    const birth_month=(birthDate.getMonth())+1;
+    const birth_year=birthDate.getFullYear();
+
+      
+    const today_day = new Date();
+    const today_date = today_day.getDate();
+    const today_month = (today_day.getMonth())+1;
+    const today_year = today_day.getFullYear();
+      
+    var calculatedAge=0;
+      
+    if (today_month> birth_month)
+    {
+      calculatedAge = today_year - birth_year;
+    }
+    else if (today_month == birth_month)
+    {
+      if (today_date >= birth_date) 
+        calculatedAge = today_year - birth_year;
+      else calculatedAge = today_year - birth_year - 1;
+    }
+    else calculatedAge = today_year - birth_year - 1;
+    return calculatedAge;
+  }
+
+</script>
+</div><br>
+</body>
+</html>
